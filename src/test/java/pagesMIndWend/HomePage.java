@@ -1,9 +1,6 @@
 package pagesMIndWend;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -60,7 +57,7 @@ public class HomePage {
     }
 
     public ComponentsPage openComponentsPage() {
-        signUpButton.click();
+        componentsPageButton.click();
         return new ComponentsPage(driver);
     }
 
@@ -110,12 +107,14 @@ public class HomePage {
     }
 
     public void compareLocations() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement element1 = wait.until(ExpectedConditions.visibilityOf(mobileGetTheAppButton));
         int appLocation = element1.getLocation().y;
         int videoLocation = mobileWatchVideoButton.getLocation().y;
-        System.out.println(appLocation);
-        System.out.println(videoLocation);
+        if (appLocation < videoLocation) {
+        } else {
+            throw new ElementNotInteractableException ("There is a problem with location test");
+        }
     }
     public void confirm3DImageIsShown(){
         driver.manage().window().maximize();

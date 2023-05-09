@@ -1,4 +1,4 @@
-package tests;
+package tests.additionalTests;
 
 import base.TestUtil;
 import pagesMIndWend.HomePage;

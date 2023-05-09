@@ -1,0 +1,29 @@
+>>>>>LoginTest<<<<<
+Given the Framer site is loaded
+When I click on "Sign Up" button
+And I click on "Email" bar
+And I enter user-Email
+And I click on "Password" bar
+And I enter password
+And I click on Sign Up button below them
+Then an error message is shown and the user is never logged in
+
+
+>>>>>WatchVideoTest<<<<<
+Given the Framer site is loaded
+And I click on "Watch Video" button
+Then there is no change on the page or video shown
+
+>>>>GetTheAppButton>>>>>
+Given the Framer site is loaded
+And I click on "Components" page
+And click on "Get The App Button"
+Then there is no change on the page
+
+>>>>QestionTwoFAQCorrectText<<<<
+Given the Framer site is loaded
+And I click on "Pricing" page
+And scroll down to "FAQ"
+And I click on "Do you accept PayPal"
+Then confirm that the text is correct
+
