@@ -28,9 +28,10 @@ public class ComponentsPage {
     public String getColorOfElement() {
         driver.manage().window().maximize();
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", newsletterEmailBar);
-        String elementColourRGBA = subscribeSignUpButton.getCssValue("color");
-        String convertToRGB = Color.fromString(elementColourRGBA).asRgb();
-        return convertToRGB;
+        String elementColourRGBA = subscribeSignUpButton.getCssValue("background");
+        //String convertColorToRGB = Color.fromString(elementColourRGBA).asRgb();
+        String convertBackgroundToRGB = elementColourRGBA.replaceAll("[\\s\\S]{0,55}$","");
+        return convertBackgroundToRGB;
     }
 
     public void getTheAppTest() {

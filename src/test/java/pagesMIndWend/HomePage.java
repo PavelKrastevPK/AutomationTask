@@ -1,17 +1,12 @@
 package pagesMIndWend;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
-import org.testng.Assert;
-
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class HomePage {
     private WebDriver driver;
@@ -27,17 +22,17 @@ public class HomePage {
     private WebElement watchVideoButton;
     @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[4]/div[1]/div/div/div[2]/p/span")
     private WebElement getTheAppButton;
-    @FindBy(xpath = "//*[@id=\"overlay\"]/div[2]")
+    @FindBy(xpath = "//*[@class=\"framer-1fdeldd\"]")
     private WebElement backgroundWhenGetTheApp;
     @FindBy(xpath = "//*[contains(text(),'Click to view in 3D')]")
     private WebElement image3DButton;
     @FindBy(xpath = "//*[@name= 'Card']")
     private WebElement cardsElements;
-    @FindBy(xpath = "//*[@id='canvas3d']")
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div[2]/div[1]/div/div/div/iframe")
     private WebElement image3D;
-    @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[4]/div[1]/div/div")
+    @FindBy(xpath = "//*[@class=\"framer-1r7r56c-container\"]")
     private WebElement mobileGetTheAppButton;
-    @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[4]/div[2]/div/div/div[2]/p/span")
+    @FindBy(xpath = "//*[@class=\"framer-1p1vo87-container\"]")
     private WebElement mobileWatchVideoButton;
 
     public HomePage(WebDriver driver) {
@@ -99,15 +94,15 @@ public class HomePage {
     public void getBackgroundStatus() {
         getTheAppButton.click();
         String style = backgroundWhenGetTheApp.getAttribute("style");
-        boolean isBlurred = style.contains("opacity = 0.0236393");
-        if (isBlurred = true) {
-        } else {
-            System.out.println("There is a problem blurring the background");
+        boolean isBlurred = style.contains("opacity");
+        if (isBlurred == false) {
+            throw new IllegalArgumentException("There is a problem blurring the background");
         }
     }
 
     public void compareLocations() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement element1 = wait.until(ExpectedConditions.visibilityOf(mobileGetTheAppButton));
         int appLocation = element1.getLocation().y;
         int videoLocation = mobileWatchVideoButton.getLocation().y;

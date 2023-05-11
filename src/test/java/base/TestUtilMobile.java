@@ -41,7 +41,7 @@ public class TestUtilMobile {
     }
 
     private void createGetChromeDriver(int implicitWait) {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pavel\\.cache\\selenium\\chromedriver\\win32\\112.0.5615.49\\chromedriver.exe");
+        System.setProperty("web-driver.chrome.driver", "C:\\Users\\Pavel\\.cache\\selenium\\chromedriver\\win32\\112.0.5615.49\\chromedriver.exe");
         Map<String, String> mobileEmulation = new HashMap<>();
         mobileEmulation.put("deviceName", "Galaxy S5");
         ChromeOptions options = new ChromeOptions();
