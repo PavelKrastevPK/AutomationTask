@@ -101,13 +101,11 @@ public class HomePage {
     }
 
     public void compareLocations() {
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement element1 = wait.until(ExpectedConditions.visibilityOf(mobileGetTheAppButton));
         int appLocation = element1.getLocation().y;
         int videoLocation = mobileWatchVideoButton.getLocation().y;
-        if (appLocation < videoLocation) {
-        } else {
+        if (appLocation > videoLocation) {
             throw new ElementNotInteractableException ("There is a problem with location test");
         }
     }

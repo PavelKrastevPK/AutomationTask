@@ -1,6 +1,5 @@
 package base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -22,12 +21,10 @@ public class TestUtilMobile {
     public void Setup() {
         setupBrowserDriver();
     }
-
     @AfterMethod
     public void tearDown() {
-       // driver.quit();
+        driver.quit();
     }
-
     private void setupBrowserDriver() {
         try (FileInputStream configFile = new FileInputStream("src/test/resources/MindWend/")) {
             Properties config = new Properties();

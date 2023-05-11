@@ -3,7 +3,6 @@ package pagesMIndWend;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,9 +28,7 @@ public class ComponentsPage {
         driver.manage().window().maximize();
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", newsletterEmailBar);
         String elementColourRGBA = subscribeSignUpButton.getCssValue("background");
-        //String convertColorToRGB = Color.fromString(elementColourRGBA).asRgb();
-        String convertBackgroundToRGB = elementColourRGBA.replaceAll("[\\s\\S]{0,55}$","");
-        return convertBackgroundToRGB;
+        return elementColourRGBA.replaceAll("[\\s\\S]{0,55}$","");
     }
 
     public void getTheAppTest() {
